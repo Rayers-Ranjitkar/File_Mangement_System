@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 
 /* Icons & Img Import */
-import IconEmail from "../../assets/IconEmail.png";
-import IconPassword from "../../assets/IconPassword.png";
+import IconEmail from "../../assets/AuthenticationIcons/IconEmail.png";
+import IconPassword from "../../assets/AuthenticationIcons/IconPassword.png";
 
 const Authentication = ({ isLoginPage, onFormSubmit }) => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Authentication = ({ isLoginPage, onFormSubmit }) => {
 
   return (
     <>
-      <form>
+      <form className="font-quicksand">
         {/* Outermost div */}
         <div className="min-h-screen flex items-center  flex-col gap-4 justify-center px-20">
           {/* Upper Div */}

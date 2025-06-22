@@ -20,3 +20,44 @@ export const postSignUpDataAPI = (email, password) => {
     password: password,
   });
 };
+
+//Upload files
+export const postFileUploadToAPI = (fileData) => {
+  const token = localStorage.getItem('token');
+  return apiInstance.post("/file/upload", fileData,{
+    headers:{
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+//Get files details
+export const GetFileFromAPI = () => {
+  const token = localStorage.getItem('token');
+
+  return apiInstance.get("/file/list",{
+    headers:{
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+//Get files summary
+export const GetFilesSummaryAPI = () => {
+  const token = localStorage.getItem('token');
+
+  return apiInstance.get("/analytics/summary",{
+    headers:{
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+//Delete File
+
+//View File
+
+//Create Folder
+
+//Drive Sync
+
