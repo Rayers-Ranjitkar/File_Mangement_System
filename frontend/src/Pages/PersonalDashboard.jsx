@@ -15,7 +15,7 @@ const PersonalDashboard = () => {
   const [folderRefetch,setFolderRefetch] = useState(false);
 
   return (
-    <div className="font-jakarta">
+    <div className="font-jakarta lg:px-7">
       <Navbar setViewMode={setViewMode}/>
       <GetFilesSummary filesRefetch={filesRefetch} viewMode={viewMode} foldersNum={foldersNum}/> {/* yei same yeha pathauda huncha as setFilesRefetch ley API mai file upload garedeyesi matrai filesRefetch ko state change garedincha and since, API files data is already updated tesh pichadi aba jaba ma yo duitai dependency array use huncha API is the single truth nita , so summary pani API bata liney ho, files ko data pani so, API updated bhayesakeko ley both refresh garda summary ra fetch nai right aayo, tara if summary was dependent on the filesArr of getFiles then maile dependency ma "files use garnu parthiyo" aahele parena heheh okayyyy 1 line mai bhayooo */}
 
@@ -42,7 +42,7 @@ const PersonalDashboard = () => {
       </div>
 
       {/* <GetFiles filesRefetch={filesRefetch} viewMode={viewMode} setFoldersNum={setFoldersNum}/> */} {/* Note here, setFoldersNum is a prop-drilling */}
-      <FilesFoldersContainer filesRefetch={filesRefetch} viewMode={viewMode} setFoldersNum={setFoldersNum} folderRefetch={folderRefetch}/>
+      <FilesFoldersContainer filesRefetch={filesRefetch} viewMode={viewMode} setFoldersNum={setFoldersNum} folderRefetch={folderRefetch} setFolderRefetch={setFolderRefetch}/>
       {/* <GetFolders /> */}
     </div>
   );

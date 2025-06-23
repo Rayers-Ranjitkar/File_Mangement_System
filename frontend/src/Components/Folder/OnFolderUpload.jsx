@@ -16,7 +16,7 @@ const OnFolderUpload = ({SetIsUploadFolderClicked,setFolderRefetch}) => {
       toast.success("Folder Successfully Uploaded");
       setFolderName("");
       SetIsUploadFolderClicked(false);
-      setFolderRefetch((prev)=>!prev); /* Refetch from the folder API, as this changes the value of folderRefetch and the folder Arr refetches as folderRefetch is used as a dependency */
+      setFolderRefetch((prev)=>!prev); /* Refetch from the folder API, as this changes the value of folderRefetch which triggers re-render + dependency ma bhako pani feri re-renders and the folder Arr refetches as folderRefetch is used as a dependency */
     } catch (error) {
       console.log("Failed to create folder!", error);
       toast.error(`Folder creation failed! ${error.response.data.error}`);

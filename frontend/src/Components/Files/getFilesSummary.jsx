@@ -11,11 +11,11 @@ const GetFilesSummary = ({filesRefetch, viewMode, foldersNum}) => {
       try {
         const resGetFileSummaryAPI = await GetFilesSummaryAPI();
         console.log("resGetFileSummaryAPI", resGetFileSummaryAPI);
-        toast.success("Files Summary Fetched !");
+        // toast.success("Files Summary Fetched !");
         setFilesSummary(resGetFileSummaryAPI.data.data);
       } catch (error) {
         console.log("Failed to fetch files summary!", error);
-        toast.error("Failed to fetch files summary!");
+        // toast.error("Failed to fetch files summary!");
       }
     };
     GetFilesDataSummary();

@@ -9,7 +9,7 @@ import { useState } from "react";
 
 
 const Navbar = ({setViewMode}) => {
-
+  
     //Profile click box-pop
     const [isProfileClicked,setIsProfileClicked] = useState(false);
     const handleProfileClick = () =>{

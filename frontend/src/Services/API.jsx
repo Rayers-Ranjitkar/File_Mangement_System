@@ -79,8 +79,61 @@ export const GetFoldersAPI = () => {
   });
 };
 
-//Delete File
+//Download file & preview file
+export const GetDownloadFileAPI = (id) => {
+  const token = localStorage.getItem("token");
 
-//View File
+  return apiInstance.get(`/file/download/id/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    responseType: "blob", // This line is to tell Axios to expect binary data as from API server we'll get a file i.e. a Binary Large Js Object so, converting to BLOB is IMP, without this , Axios tries to parse the response as JSON or text — which corrupts binary files like PDFs or images.
+  });
+};
+
+//Rename Folder
+export const postRenameFolderAPI = (newFolderName,editFolderId) => {
+  const token = localStorage.getItem("token");
+  return apiInstance.post(
+    `/folder/rename/${editFolderId}`,
+    {
+      name: newFolderName,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+//Delete Folder
+export const deleteFolderAPI = (deleteFolderId) => {
+  const token = localStorage.getItem("token");
+  return apiInstance.delete(
+    `/folder/delete/${deleteFolderId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
 
 //Drive Sync
+export const patchDriveSyncAPI = (driveEnabledStatus) => {
+  const token = localStorage.getItem("token");
+  return apiInstance.patch(
+    `/user/setting/drive`,
+    {
+      "enabled": driveEnabledStatus,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+//Responsiveness

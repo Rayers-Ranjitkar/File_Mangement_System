@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp"; /* It's like a utility function like we've done in API right. We are just defining an object like a JSON schema, list of routes, an axios instance, Firebase config : building a plain JavaScript object that the router library will use to figure out what to render. since, we aren't returning jsx we don't need let index = () => i.e functinal component of index */
 import PersonalDashboard from "../Pages/PersonalDashboard";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/personalDashboard",
-    element: <PersonalDashboard />,
+    element: (
+      <ProtectedRoutes>
+        <PersonalDashboard /> {/* protected routes component wa kunai pani component bhitra another component nest garda teslai prop jasari send garedincha haita bhitra ko component lai */}
+      </ProtectedRoutes>
+    ),
   },
 ]);
 

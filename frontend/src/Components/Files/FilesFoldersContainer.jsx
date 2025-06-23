@@ -1,7 +1,7 @@
 import GetFolders from "../Folder/GetFolders";
-import GetFiles from "./getFiles";
+import GetFiles from "./GetFiles";
 
-const FilesFoldersContainer = ({filesRefetch,viewMode,setFoldersNum,folderRefetch}) => {
+const FilesFoldersContainer = ({filesRefetch,viewMode,setFoldersNum,folderRefetch,setFolderRefetch}) => {
 
   return (
     <div>
@@ -13,7 +13,7 @@ const FilesFoldersContainer = ({filesRefetch,viewMode,setFoldersNum,folderRefetc
         </div>
       </div>
 
-      {viewMode == "files" ?<GetFiles filesRefetch={filesRefetch}/> : <GetFolders setFoldersNum={setFoldersNum} folderRefetch={folderRefetch} />}
+      {viewMode == "files" ?<GetFiles filesRefetch={filesRefetch}/> : <GetFolders setFoldersNum={setFoldersNum} folderRefetch={folderRefetch} setFolderRefetch={setFolderRefetch}/>}
     </div>
   );
 };

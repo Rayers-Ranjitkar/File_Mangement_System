@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate(); // when we call useNavigate() function it returns a function (let’s call it a “navigate function”). // 'navigate' variable is now a function and inside that when we pass a path navigate('path') it redirects us to that path hehe
-  
+     //console.log(localStorage.getItem('token'));
   /* Login API Request */
   const onLoginSubmit = async (email,password) => {
     try {
