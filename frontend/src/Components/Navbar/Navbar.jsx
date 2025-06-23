@@ -8,7 +8,7 @@ import OnProfileClick from "./OnProfileClick";
 import { useState } from "react";
 
 
-const Navbar = () => {
+const Navbar = ({setViewMode}) => {
 
     //Profile click box-pop
     const [isProfileClicked,setIsProfileClicked] = useState(false);
@@ -21,12 +21,12 @@ const Navbar = () => {
       <div className="w-full h-14 border-b border-b-gray-400 flex justify-between items-center px-5">
         {/* Files and Folder icons div */}
         <div className="flex gap-4">
-            <span className="relative">
-                <img src={FileIcon} alt="fileIcon" className="cursor-pointer"/>
+            <span className="relative cursor-pointer" onClick={()=>{setViewMode("files")} }>
+                <img src={FileIcon} alt="fileIcon" className="cursor-pointer" />
                 <CiFileOn className="absolute inset-0 h-5 w-5 m-auto text-[#22C55E]"/>
             </span>
             <span>
-                <img src={FolderIcon} alt="folderIcon" className="cursor-pointer"/>
+                <img src={FolderIcon} alt="folderIcon" className="cursor-pointer" onClick={()=>{setViewMode("folders")} }/>
             </span>
         </div>
 

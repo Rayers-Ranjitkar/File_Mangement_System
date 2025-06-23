@@ -2,8 +2,8 @@ import { FaFolderPlus } from "react-icons/fa6";
 import OnFolderUpload from "./OnFolderUpload";
 import { useState } from "react";
 
-const UploadFolder = () => {
-  const [isUploadFolderClicked, SetIsUploadFolderClicked] = useState(true);
+const UploadFolder = ({setFolderRefetch}) => {
+  const [isUploadFolderClicked, SetIsUploadFolderClicked] = useState(false);
   const handleFolderUpload = () => {
     SetIsUploadFolderClicked(!isUploadFolderClicked);
   };
@@ -17,7 +17,7 @@ const UploadFolder = () => {
         />
         {isUploadFolderClicked && (
           <span className="absolute -right-10 top-18">
-            <OnFolderUpload />{" "}
+            <OnFolderUpload SetIsUploadFolderClicked={SetIsUploadFolderClicked} setFolderRefetch={setFolderRefetch} />{" "}
             {/* Component ma classname + absolute haru chaldaina haita so put in span and do */}
           </span>
         )}

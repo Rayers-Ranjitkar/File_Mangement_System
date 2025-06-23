@@ -2,16 +2,22 @@ import FileUpload from "../Components/Files/fileUpload";
 import Navbar from "../Components/Navbar/Navbar";
 import DriveSync from "../Components/DriveSync/DriveSync";
 import UploadFolder from "../Components/Folder/UploadFolder";
-import GetFiles from "../Components/Files/getFiles";
+
 import { useState } from "react";
 import GetFilesSummary from "../Components/Files/getFilesSummary";
 
+import FilesFoldersContainer from "../Components/Files/FilesFoldersContainer";
+
 const PersonalDashboard = () => {
-  const [filesRefetch, setFilesRefetch] = useState(false);
+  const [filesRefetch, setFilesRefetch] = useState(false); 
+  const [viewMode,setViewMode] = useState("files");
+  const [foldersNum,setFoldersNum] = useState(0);
+  const [folderRefetch,setFolderRefetch] = useState(false);
+
   return (
     <div className="font-jakarta">
-      <Navbar />
-      <GetFilesSummary filesRefetch={filesRefetch}/> {/* yei same yeha pathauda huncha as setFilesRefetch ley API mai file upload garedeyesi matrai filesRefetch ko state change garedincha and since, API files data is already updated tesh pichadi aba jaba ma yo duitai dependency array use huncha API is the single truth nita , so summary pani API bata liney ho, files ko data pani so, API updated bhayesakeko ley both refresh garda summary ra fetch nai right aayo, tara if summary was dependent on the filesArr of getFiles then maile dependency ma "files use garnu parthiyo" aahele parena heheh okayyyy 1 line mai bhayooo */}
+      <Navbar setViewMode={setViewMode}/>
+      <GetFilesSummary filesRefetch={filesRefetch} viewMode={viewMode} foldersNum={foldersNum}/> {/* yei same yeha pathauda huncha as setFilesRefetch ley API mai file upload garedeyesi matrai filesRefetch ko state change garedincha and since, API files data is already updated tesh pichadi aba jaba ma yo duitai dependency array use huncha API is the single truth nita , so summary pani API bata liney ho, files ko data pani so, API updated bhayesakeko ley both refresh garda summary ra fetch nai right aayo, tara if summary was dependent on the filesArr of getFiles then maile dependency ma "files use garnu parthiyo" aahele parena heheh okayyyy 1 line mai bhayooo */}
 
       {/* Drive Sync div */}
       <div className="border-b border-b-gray-400  ">
@@ -30,12 +36,14 @@ const PersonalDashboard = () => {
         </span>
 
         <span className="flex flex-col items-center gap-2">
-          <UploadFolder />
+          <UploadFolder setFolderRefetch={setFolderRefetch} />
           <p className="text-sm">Upload Folders</p>
         </span>
       </div>
 
-      <GetFiles filesRefetch={filesRefetch} />
+      {/* <GetFiles filesRefetch={filesRefetch} viewMode={viewMode} setFoldersNum={setFoldersNum}/> */} {/* Note here, setFoldersNum is a prop-drilling */}
+      <FilesFoldersContainer filesRefetch={filesRefetch} viewMode={viewMode} setFoldersNum={setFoldersNum} folderRefetch={folderRefetch}/>
+      {/* <GetFolders /> */}
     </div>
   );
 };

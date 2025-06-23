@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { GetFileSize } from "../../Utils/GetFileSize";
 
-const GetFilesSummary = ({filesRefetch}) => {
+const GetFilesSummary = ({filesRefetch, viewMode, foldersNum}) => {
   const [filesSummary,setFilesSummary] = useState({});
   useEffect(() => {
     const GetFilesDataSummary = async () => {
@@ -24,9 +24,9 @@ const GetFilesSummary = ({filesRefetch}) => {
   return (
     <>
       <div className="font-jakarta mt-10 ml-8 flex flex-col gap-2.5">
-        <h1 className="text-3xl font-bold">My Files</h1>
+        <h1 className="text-3xl font-bold">{viewMode == "files"? "My Files":"My Folders"}</h1>
         <span className="flex gap-4">
-          <p>{/* 118 Items */}{`${filesSummary.totalFiles} Items`}</p>
+          <p>{/* 118 Items */}{viewMode == "files"?`${filesSummary.totalFiles} Items`:`${foldersNum} Items`}</p>
           <p>{/* 30MB Used */}{`${GetFileSize(filesSummary.totalStorage)} Used`}</p>
           <p>{/* 18% Available */}{`${100-(GetFileSize(filesSummary.totalStorage).slice(0,-2))}% Available`}</p> {/* slice(0,-2) => 2.5MB (M=-2,B=-1) so, (starting,last) last element is exclusive and is excluded */}
         </span>
